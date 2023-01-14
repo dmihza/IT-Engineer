@@ -1,0 +1,5 @@
+Function calculator dengan callback:
+
+function calculator(a, b, callback) {
+  return callback(a, b);
+}
