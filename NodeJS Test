@@ -3,3 +3,101 @@ Function calculator dengan callback:
 function calculator(a, b, callback) {
   return callback(a, b);
 }
+
+Function untuk mencari kedalaman suatu tree:
+
+function findTreeDepth(id, array) {
+  let depth = 0;
+  let current = array.find(item => item.id === id);
+  while (current.upline !== '0') {
+    current = array.find(item => item.id === current.upline);
+    depth++;
+  }
+  return depth;
+}
+
+Function untuk menyelesaikan permainan sudoku:
+function createBoard(boardString) {
+  // Memisahkan string menjadi array 2D 9x9
+  let board = [];
+  for (let i = 0; i < 9; i++) {
+    board.push(boardString.slice(i * 9, (i + 1) * 9).split('').map(Number));
+  }
+  return board;
+}
+
+function checkRow(board, row) {
+  // Mengecek baris dan mengisi angka yang kosong jika ditemukan
+  let possibleNumbers = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+  for (let i = 0; i < 9; i++) {
+    if (board[row][i] !== 0) {
+      possibleNumbers.splice(possibleNumbers.indexOf(board[row][i]), 1);
+    }
+  }
+  for (let i = 0; i < 9; i++) {
+    if (board[row][i] === 0) {
+      board[row][i] = possibleNumbers.shift();
+    }
+  }
+  return board;
+}
+
+function checkColumn(board, column) {
+  // Mengecek kolom dan mengisi angka yang kosong jika ditemukan
+  let possibleNumbers = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+  for (let i = 0; i < 9; i++) {
+    if (board[i][column] !== 0) {
+      possibleNumbers.splice(possibleNumbers.indexOf(board[i][column]), 1);
+    }
+  }
+  for (let i = 0; i < 9; i++) {
+    if (board[i][column] === 0) {
+      board[i][column] = possibleNumbers.shift();
+    }
+  }
+  return board;
+}
+
+function checkSquare(board, square) {
+  // Mengecek kotak 3x3 dan mengisi angka yang kosong jika ditemukan
+  let possibleNumbers = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+  let startRow = (square % 3) * 3;
+  let startColumn = Math.floor(square / 3) * 3;
+  for (let i = startRow; i < startRow + 3; i++) {
+    for (let j = startColumn; j < startColumn + 3; j++) {
+      if (board[i][j] !== 0) {
+        possibleNumbers.splice(possibleNumbers.indexOf(board[i][j]), 1);
+      }
+    }
+  }
+  for (let i = startRow; i < startRow + 3; i++) {
+    for (let j = startColumn; j < startColumn + 3; j++) {
+      if (board[i][j] === 0) {
+        board[i][j] = possibleNumbers.shift();
+      }
+    }
+  }
+  return board;
+}
+
+function solveSudoku(boardString) {
+  let board = createBoard(boardString);
+  let solved = false;
+  while (!solved) {
+    solved = true;
+    for (let i = 0; i < 9; i++) {
+      board = checkRow(board, i);
+      board = checkColumn(board, i);
+      board = checkSquare(board, i);
+    }
+    for (let i = 0; i < 9; i++) {
+      for (let j = 0; j < 9; j++) {
+        if (board[i][j] === 0) {
+          solved = false;
+          break;
+        }
+      }
+    }
+  }
+  return board;
+}
