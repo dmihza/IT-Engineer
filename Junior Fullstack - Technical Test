@@ -1,3 +1,5 @@
+Case 1
+
 Buah apa saja yang dimiliki Andi: Apel, Kurma, Manggis, Jeruk Bali, Salak
 Andi memisahkan buahnya menjadi beberapa wadah berdasarkan tipe buah (fruitType). Berapa jumlah wadah yang dibutuhkan? Dan ada buah apa saja di masing-masing wadah?
 Jumlah wadah yang dibutuhkan adalah 2, yaitu wadah untuk buah import dan wadah untuk buah lokal.
@@ -10,3 +12,19 @@ Total stock buah lokal: 260
 
 Apakah ada komentar terkait kasus di atas?
 Terdapat duplikat fruitId yang digunakan pada beberapa objek buah. Case Sensitivity pada fruitname.
+
+
+Case 2
+
+function countComments(comments: IComment[]): number {
+  let count = 0;
+  for (const comment of comments) {
+    count++;
+    if (comment.replies) {
+      count += countComments(comment.replies);
+    }
+  }
+  return count;
+}
+
+Case 3
