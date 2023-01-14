@@ -1,0 +1,12 @@
+Buah apa saja yang dimiliki Andi: Apel, Kurma, Manggis, Jeruk Bali, Salak
+Andi memisahkan buahnya menjadi beberapa wadah berdasarkan tipe buah (fruitType). Berapa jumlah wadah yang dibutuhkan? Dan ada buah apa saja di masing-masing wadah?
+Jumlah wadah yang dibutuhkan adalah 2, yaitu wadah untuk buah import dan wadah untuk buah lokal.
+Buah-buah yang ada di wadah import: Apel, Kurma
+Buah-buah yang ada di wadah lokal: Manggis, Jeruk Bali, Salak
+
+Berapa total stock buah yang ada di masing-masing wadah?
+Total stock buah import: 100
+Total stock buah lokal: 260
+
+Apakah ada komentar terkait kasus di atas?
+Terdapat duplikat fruitId yang digunakan pada beberapa objek buah. Case Sensitivity pada fruitname.
