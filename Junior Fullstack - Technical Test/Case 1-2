@@ -26,5 +26,3 @@ function countComments(comments: IComment[]): number {
   }
   return count;
 }
-
-Case 3
